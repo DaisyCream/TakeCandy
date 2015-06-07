@@ -22,18 +22,16 @@ body{
     width: 8%;
     height: 100%;
     float: left;
-    margin-left:0.2%;
+    margin-left:0.1%;
+    border: 1px solid #000000;
 }
 
 #upThing .box .boxIn{
     position: absolute;
-    width: 70px;
-    height: 70px;
-    border-radius: 35px;
+    width: 70%;
+
     left: 50%;
-    margin-left: -35px;
     background-color: #f5a4a0;
-    -webkit-animation: boxDown 1s;
 }
 
 
