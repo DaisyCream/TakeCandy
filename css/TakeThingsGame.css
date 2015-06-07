@@ -1,14 +1,53 @@
+@font-face {
+    font-family: enLogoFont;
+    src: url(../font/SHOWG.TTF);
+}
+
+
 body{
     background-color: #d7efde;
     padding: 0px;
     margin: 0px;
+    font-family: enLogoFont;
 }
 
 
 
 /*****************************Game Star***************************/
+#start{
+    width: 600px;
+    height: 300px;
+    position: absolute;
+    border: 1px solid #000000;
+    left: 50%;
+    margin-left: -300px;
+    top: 150px;
+    z-index:100;
+    background-color: darkslategrey;
+}
+
+#start #startBtu{
+    width: 100px;
+    height: 40px;
+    position: absolute;
+    background-color: #f5a4a0;
+    right: 100px;
+    bottom: 50px;
+    text-align: center;
+    line-height: 40px;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+#star #starBtu:hover{
+    color:#d7efde;
+}
+
 
 /*****************************Game In***************************/
+#time{
+    position: absolute;
+}
 
 #upThing{
     position: relative;
@@ -23,7 +62,6 @@ body{
     height: 100%;
     float: left;
     margin-left:0.1%;
-    border: 1px solid #000000;
 }
 
 #upThing .box .boxIn{
@@ -53,9 +91,51 @@ body{
     background-image: url(../img/box.png);
 
     position: absolute;
-    bottom: 5px;
+    bottom: 2px;
+}
+
+#receiver #score{
+    width: 100%;
+    font-size: 24px;
+    text-align: center;
+    line-height: 105px;
 }
 
 
 
 /*****************************Game End***************************/
+#endBlock{
+    width: 600px;
+    height: 300px;
+    position: absolute;
+    top: 150px;
+    left: 50%;
+    margin-left: -300px;
+    background-color: darkslategrey;
+    display: none;
+    z-index:100;
+}
+
+#endBlock #endScore{
+    width: 100px;
+    height: 40px;
+    background-color: #d7efde;
+    position: absolute;
+    bottom:50px;
+    left:100px;
+}
+
+#endBlock #newBtu{
+    width: 80px;
+    height: 80px;
+    background-color: #f5a4a0;
+    position: absolute;
+    bottom:50px;
+    right:100px;
+    cursor: pointer;
+
+}
+
+#endBlock #newBtu:hover{
+    background-color: blue;
+}

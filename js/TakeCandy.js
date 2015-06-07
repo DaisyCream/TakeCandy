@@ -3,23 +3,49 @@
  */
 
 
-/*****************************box move**************************/
 
+
+
+
+
+var start = document.getElementById("start");
+var startBtu = document.getElementById("startBtu");
+scoreAll = 0;
+var score = document.getElementById("score");
 var upThing = document.getElementById("upThing");
 var receiver = document.getElementById("receiver");
-var IsRight = false;
+var time = 10.00;
 var IsLeft = false;
+var IsRight = false;
+var timeBlock = document.getElementById("time");
+var endBlock = document.getElementById("endBlock");
+var endScore = document.getElementById("endScore");
+var newBtu = document.getElementById("newBtu");
 window.onload = function () {
+
+    /*****************************game star*************************/
+
+    startBtu.onclick  = function gameStar(){
+        start.style.display = "none";
+        endBlock.style.display = "none";
+        boxStart = setInterval(gameStart,500);
+        receiver.start = setInterval(moveReceiver,20);
+        timeBlock.start = setInterval(timeStart,20);
+    };
+
+    /*****************************box move**************************/
+
     upThing.style.height = (receiver.offsetTop+receiver.offsetHeight)+ "px";
-    setInterval(function moveReceiver() {
-        if (IsRight) {
-            receiver.style.left = receiver.offsetLeft + 10 + "px";
-        }
-        else if (IsLeft) {
+    function moveReceiver() {
+        if (IsLeft) {
             receiver.style.left = receiver.offsetLeft - 10 + "px";
         }
+        else if (IsRight) {
+            receiver.style.left = receiver.offsetLeft + 10 + "px";
+        }
         limit();
-    }, 20);
+    }
+
     document.onkeydown = function (event) {
         var event = (event || window.event);
         switch (event.keyCode) {
@@ -58,9 +84,17 @@ window.onload = function () {
 
 /*****************************candy down**************************/
 
+    candybox = document.getElementsByClassName("box");
+
+    /**
+     * create a random;
+     * @param x
+     * @returns {*}
+     */
     function createRandom(x){
         return parseInt(Math.random()*x);
     }
+
 
     /***
      * set the traget's height
@@ -71,48 +105,93 @@ window.onload = function () {
         target.style.marginLeft = -(target.offsetWidth/2) + "px";
     }
 
-    var z = document.getElementsByClassName("boxIn");
 
-    candybox = document.getElementsByClassName("box");
-    setCandyHeight(z[0]);
-    downing(z[0],20,1);
+
     /**
      * this is set the candybox is there;
      */
-    //
-    for(var i=0;i<candybox[i].length;i++){
-        candybox[i].IsHas = false;
+
+
+    function gameStart(){
+        var index = createRandom(12);
+        var box = document.createElement("div");
+        candybox[index].appendChild(box);
+        box.setAttribute("class", "boxIn");
+        setCandyHeight(box);
+        downing(box,(parseInt(Math.random()*30)+30),1,index);
+
     }
 
-    setInterval( function(){
-        var box = document.createElement("div");
-        box.setAttribute("class", "boxIn");
-        var index = createRandom(12);
-        while(candybox[index]){
-            index = createRandom(12);
-        }
-        setCandyHeight(box);
-        candybox[index].appendChild(box);
-        downing(box,(parseInt(Math.random()*30)+10),1);
 
 
 
-    },2000);
+    /***
+     * This is for the candy's move;
+     * @param target
+     * @param time
+     * @param n
+     */
 
-    function downing (target,time,n){
+    function downing (target,time,n,index){
         var s = n*n;
+        if((target.offsetHeight+target.offsetTop+10)>receiver.offsetTop){
+            if(isTake(target,index)) {
+                scoreAll++;
+                score.innerHTML = "score: " + scoreAll;
+                target.parentNode.removeChild(target);
+            }
+        }
+
         if((candybox[0].offsetHeight-(target.offsetHeight+target.offsetTop+30))<=0){
-            return;
+            target.parentNode.removeChild(target);
         }
         target.style.top = s + "px";
-        setTimeout(function(){downing(target,time,n+1)},time);
+        setTimeout(function(){downing(target,time,n+1,index)},time);
     }
 
-    function isTake(){
-        left = receiver.offsetleft;
-        right = left + receiver.offsetWidth;
-        if
-        return true;
+    /**
+     *
+     * @param target
+     * @param index is a candy's num;
+     * @returns {boolean}
+     */
+
+    function isTake(target,index){
+        boxIndex=target.offsetLeft + candybox[index].offsetLeft;
+
+        min=receiver.offsetLeft-target.offsetWidth+50;
+        max=receiver.offsetLeft+receiver.offsetWidth+target.offsetWidth-50;
+        console.log(min+","+max+"-->"+boxIndex);
+        if(boxIndex>=min && boxIndex<=max){
+            return true;
+        }
+        return false;
+    }
+
+    /*****************************game end**************************/
+    function timeStart(){
+        time -= 0.02;
+        timeBlock.innerHTML = parseInt(time*100)/100;
+        if(time<=0.00){
+            GameOver();
+        }
+    }
+
+    function GameOver(){
+        clearInterval(timeBlock.start);
+        clearInterval(boxStart);
+        clearInterval(receiver.start);
+
+        endBlock.style.display = "block";
+        endScore.innerHTML = "Score: " + scoreAll;
+        timeBlock.innerHTML = 0.00;
+    }
+
+
+
+
+    newBtu.onclick = function(){
+        location.href = "index.html";
     }
 
 };
