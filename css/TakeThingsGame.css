@@ -5,7 +5,7 @@
 
 
 body{
-    background-color: #d7efde;
+    background-color: #dfcdb1;
     padding: 0px;
     margin: 0px;
     font-family: enLogoFont;
@@ -15,38 +15,45 @@ body{
 
 /*****************************Game Star***************************/
 #start{
-    width: 600px;
-    height: 300px;
+    width: 750px;
+    height: 550px;
     position: absolute;
-    border: 1px solid #000000;
-    left: 50%;
-    margin-left: -300px;
-    top: 150px;
+    left: 47%;
+    margin-left: -375px;
+    top: 30px;
     z-index:100;
-    background-color: darkslategrey;
+    background-image: url(../img/star_bg.png);
+    /*background-color: darkslategrey;*/
 }
 
 #start #startBtu{
-    width: 100px;
-    height: 40px;
+    width: 110px;
+    height: 50px;
     position: absolute;
-    background-color: #f5a4a0;
-    right: 100px;
-    bottom: 50px;
+    background-color: #ed8f84;
+    border-radius: 8px;
+    right: 280px;
+    bottom: 120px;
     text-align: center;
-    line-height: 40px;
-    font-size: 20px;
+    line-height: 50px;
+    font-size: 25px;
+    color:#67b0b7;
     cursor: pointer;
+    text-shadow: 1px 1px 2px #476365;
+    box-shadow: inset 2px 2px 4px #ffc1c0;
 }
 
-#star #starBtu:hover{
-    color:#d7efde;
+#start #startBtu:hover{
+    text-shadow: 1px 0px 2px #476365;
+    box-shadow: inset -2px 2px 4px #ffc1c0;
 }
 
 
 /*****************************Game In***************************/
 #time{
     position: absolute;
+    color:#755a48;
+    font-size: 22px;
 }
 
 #upThing{
@@ -69,20 +76,11 @@ body{
     width: 70%;
 
     left: 50%;
-    background-color: #f5a4a0;
+    background-image: url(../img/candy.png);
 }
 
 
-@-webkit-keyframes boxDown {
-    0%{
-        position: absolute;
-        top: 0px;
-    }
-    100%{
-        position: absolute;
-        top: 90%;
-    }
-}
+
 
 #receiver {
     width:180px;
@@ -99,43 +97,74 @@ body{
     font-size: 24px;
     text-align: center;
     line-height: 105px;
+    color:#4d473b;
+    text-shadow: 1px 1px 2px #4d473b;
 }
 
 
 
 /*****************************Game End***************************/
 #endBlock{
-    width: 600px;
-    height: 300px;
+    width: 750px;
+    height: 550px;
     position: absolute;
-    top: 150px;
-    left: 50%;
-    margin-left: -300px;
-    background-color: darkslategrey;
-    display: none;
+    left: 47%;
+    margin-left: -375px;
+    top: 30px;
     z-index:100;
+    background-image: url(../img/star_bg.png);
+    display: none;
 }
 
 #endBlock #endScore{
-    width: 100px;
+    width: 160px;
     height: 40px;
-    background-color: #d7efde;
+    color: #ed8f84;
+    font-size: 24px;
     position: absolute;
-    bottom:50px;
-    left:100px;
+    bottom:120px;
+    left:260px;
+    -webkit-animation: shine 2s;
+    -webkit-animation-iteration-count: infinite;
+}
+
+@-webkit-keyframes shine {
+    0%{
+        color:#ffc0bf;
+        text-shadow: 1px 1px 1px #ffffff;
+    }
+    30%{
+        color:#ed8f84;
+        text-shadow: 1px 1px 8px #ffffff;
+    }
+    100%{
+        color:#ffc0bf;
+        text-shadow: 1px 1px 1px #ffffff;
+    }
 }
 
 #endBlock #newBtu{
-    width: 80px;
-    height: 80px;
-    background-color: #f5a4a0;
+    width: 60px;
+    height: 60px;
     position: absolute;
-    bottom:50px;
-    right:100px;
+    border-radius: 8px;
+    right: 220px;
+    bottom: 120px;
+    text-align: center;
+    line-height: 50px;
+    font-size: 25px;
+    color:#67b0b7;
     cursor: pointer;
+    background-image: url(../img/resert.png);
 
 }
+
+
 
 #endBlock #newBtu:hover{
-    background-color: blue;
+    width: 60px;
+    height: 60px;
+    position: absolute;
+    background-image: url(../img/resert1.png);
 }
+

@@ -35,7 +35,10 @@ window.onload = function () {
 
     /*****************************box move**************************/
 
-    upThing.style.height = (receiver.offsetTop+receiver.offsetHeight)+ "px";
+    upThing.style.height = (receiver.offsetTop+receiver.offsetHeight)+ "px";//upThing's self-adaption height
+    /**
+     * This is a receiver move
+     */
     function moveReceiver() {
         if (IsLeft) {
             receiver.style.left = receiver.offsetLeft - 10 + "px";
@@ -56,7 +59,7 @@ window.onload = function () {
                 IsLeft = true;
                 break;
         }
-    }
+    };
 
     document.onkeyup = function (event) {
         var event = event || window.event;
@@ -68,7 +71,7 @@ window.onload = function () {
                 IsLeft = false;
                 break;
         }
-    }
+    };
 
 
     function limit() {
