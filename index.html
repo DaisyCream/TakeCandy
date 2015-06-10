@@ -7,9 +7,13 @@
 </head>
 <body>
 <div id="loading">
-    loading
+    <div id="loadingBlock">
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+    </div>
 </div>
-
 <div id="Game">
     <!-----------------------Game Star------------------->
     <div id="start">
@@ -37,6 +41,20 @@
         <div class="box"></div>
         <div class="box"></div>
     </div>
+    <div id="cloud">
+        <marquee scrollamount="8" scrolldelay="100" direction="right" id="cloud1" >
+            <img src="img/cloud1.png"/>
+        </marquee>
+        <marquee scrollamount="8" scrolldelay="200" direction="right" id="cloud2" >
+            <img src="img/cloud2.png"/>
+        </marquee>
+        <marquee scrollamount="10" scrolldelay="100" direction="right" id="cloud3" >
+            <img src="img/cloud3.png"/>
+        </marquee>
+        <marquee scrollamount="8" scrolldelay="100" direction="right" id="cloud4" >
+            <img src="img/cloud1.png"/>
+        </marquee>
+    </div>
 
     <div id="receiver" style="left:43%;">
         <div id="score">
@@ -60,3 +78,4 @@
 </body>
 </html>
 <script type="text/javascript" src="js/TakeCandy.js"></script>
+<script type="text/javascript" src="js/loading.js"></script>
