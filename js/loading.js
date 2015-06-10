@@ -32,7 +32,7 @@ LOADING.loadingImg = function(){
     img.onload = function () {
         LOADING.preAll+=LOADING.avePre;
         LOADING.index++;
-        setTimeout(function(){LOADING.loadingImg()},500);
+        LOADING.loadingImg();
     };
 
 
