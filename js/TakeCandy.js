@@ -15,6 +15,10 @@ var endBlock = document.getElementById("endBlock");
 var endScore = document.getElementById("endScore");
 var newBtu = document.getElementById("newBtu");
 var candybox = document.getElementsByClassName("box");
+var Game = document.getElementById("Game");
+var loading = document.getElementById("loading");
+
+Game.style.display = "none";
 
 function preLoadImg(url) {
     var img = new Image();
@@ -24,13 +28,14 @@ function preLoadImg(url) {
 preLoadImg("img/box.png");
 preLoadImg("img/candy.png");
 preLoadImg("img/ChooseBtu.png");
-preLoadImg("img/ChooseBtu1");
 preLoadImg("img/clock.png");
 preLoadImg("img/resert.png");
 preLoadImg("img/resert1.png");
 preLoadImg("img/star_bg.png");
 
 window.onload = function () {
+    loading.style.display = "none";
+    Game.style.display = "block";
 
     /*****************************game star*************************/
     /***
