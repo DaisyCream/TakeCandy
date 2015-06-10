@@ -1,13 +1,6 @@
 /**
  * Created by DaisyCream on 2015/6/5.
  */
-
-
-
-
-
-
-
 var start = document.getElementById("start");
 var startBtu = document.getElementById("startBtu");
 scoreAll = 0;
@@ -21,16 +14,42 @@ var timeBlock = document.getElementById("time");
 var endBlock = document.getElementById("endBlock");
 var endScore = document.getElementById("endScore");
 var newBtu = document.getElementById("newBtu");
+var candybox = document.getElementsByClassName("box");
+
+function preLoadImg(url) {
+    var img = new Image();
+    img.src = url;
+}
+
+preLoadImg("img/box.png");
+preLoadImg("img/candy.png");
+preLoadImg("img/ChooseBtu.png");
+preLoadImg("img/ChooseBtu1");
+preLoadImg("img/clock.png");
+preLoadImg("img/resert.png");
+preLoadImg("img/resert1.png");
+preLoadImg("img/star_bg.png");
+
 window.onload = function () {
 
     /*****************************game star*************************/
+    /***
+     * with the screenWidth than change the time to keep the speed;
+     * @returns {*}
+     */
+    function getReTime(){
+        var ScreenWidth = document.documentElement.clientWidth;
+        var time = parseInt(ScreenWidth/(68+(ScreenWidth-1350)/4));
+        return time;
+    }
+
 
     startBtu.onclick  = function gameStar(){
         start.style.display = "none";
         endBlock.style.display = "none";
         boxStart = setInterval(gameStart,500);
-        receiver.start = setInterval(moveReceiver,20);
-        timeBlock.start = setInterval(timeStart,20);
+        receiver.start = setInterval(moveReceiver,getReTime());
+        timeBlock.start = setInterval(timeStart,50);
     };
 
     /*****************************box move**************************/
@@ -87,7 +106,7 @@ window.onload = function () {
 
 /*****************************candy down**************************/
 
-    candybox = document.getElementsByClassName("box");
+
 
     /**
      * create a random;
@@ -164,7 +183,6 @@ window.onload = function () {
 
         min=receiver.offsetLeft-target.offsetWidth+50;
         max=receiver.offsetLeft+receiver.offsetWidth+target.offsetWidth-50;
-        console.log(min+","+max+"-->"+boxIndex);
         if(boxIndex>=min && boxIndex<=max){
             return true;
         }
@@ -173,7 +191,7 @@ window.onload = function () {
 
     /*****************************game end**************************/
     function timeStart(){
-        time -= 0.02;
+        time -= 0.05;
         timeBlock.innerHTML = parseInt(time*100)/100;
         if(time<=0.00){
             GameOver();
@@ -186,7 +204,7 @@ window.onload = function () {
         clearInterval(receiver.start);
 
         endBlock.style.display = "block";
-        endScore.innerHTML = "Score: " + scoreAll;
+        endScore.innerHTML = scoreAll;
         timeBlock.innerHTML = 0.00;
     }
 

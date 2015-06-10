@@ -3,6 +3,10 @@
     src: url(../font/SHOWG.TTF);
 }
 
+@font-face {
+    font-family: timeFont;
+    src: url(../font/BROADW.TTF);
+}
 
 body{
     background-color: #dfcdb1;
@@ -15,45 +19,77 @@ body{
 
 /*****************************Game Star***************************/
 #start{
-    width: 750px;
-    height: 550px;
+    width: 56%;
+    height: 83%;
     position: absolute;
-    left: 47%;
-    margin-left: -375px;
-    top: 30px;
+    left: 50%;
+    margin-left: -32%;
+    top: 3%;
     z-index:100;
     background-image: url(../img/star_bg.png);
+    background-size: 100%;
+    background-repeat: no-repeat;
     /*background-color: darkslategrey;*/
 }
 
-#start #startBtu{
-    width: 110px;
-    height: 50px;
+#start #startBlock{
+    width: 10.6%;
+    height: 14.6%;
+    border-radius: 50%;
     position: absolute;
-    background-color: #ed8f84;
-    border-radius: 8px;
-    right: 280px;
-    bottom: 120px;
+    right: 35%;
+    bottom: 25%;
     text-align: center;
     line-height: 50px;
     font-size: 25px;
     color:#67b0b7;
     cursor: pointer;
-    text-shadow: 1px 1px 2px #476365;
-    box-shadow: inset 2px 2px 4px #ffc1c0;
+    background-image: url(../img/ChooseBtu.png);
+    background-repeat: no-repeat;
+    background-size: 100%;
+    -webkit-transition: background-image 1s, box-shadow 1s;
+
 }
 
-#start #startBtu:hover{
-    text-shadow: 1px 0px 2px #476365;
-    box-shadow: inset -2px 2px 4px #ffc1c0;
+#start #startBlock:hover{
+    background-image: url(../img/ChooseBtu1.png);
+    box-shadow: 0px 0px 14px #f2e2c8;
+}
+
+#start #startBlock #startBtu{
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    font-size: 20px;
+    top: 18%;
+    color: #817762;
+}
+
+#start #startBlock #startBtu:hover{
+    color: #726754;
 }
 
 
 /*****************************Game In***************************/
-#time{
+#timeLock{
+    width: 9.0%;
+    height: 24.4%;
     position: absolute;
-    color:#755a48;
-    font-size: 22px;
+    background-image: url(../img/clock.png);
+    background-repeat: no-repeat;
+    background-size: 100%;
+
+}
+
+#timeLock #time{
+    font-family: timeFont;
+    width: 100%;
+    font-size: 26px;
+    position: relative;
+    top: 30%;
+    color:#eddfb6;
+    text-shadow: 1px 1px 1px #755a48;
+    text-align: center;
 }
 
 #upThing{
@@ -69,24 +105,27 @@ body{
     height: 100%;
     float: left;
     margin-left:0.1%;
+    overflow: hidden;
 }
 
 #upThing .box .boxIn{
     position: absolute;
     width: 70%;
-
     left: 50%;
     background-image: url(../img/candy.png);
+    background-size: 100%;
+    background-repeat: no-repeat;
 }
 
 
 
 
 #receiver {
-    width:180px;
-    height: 105px;
-    border-radius: 4px;
+    width:13.3%;
+    height: 16.9%;
     background-image: url(../img/box.png);
+    background-repeat: no-repeat;
+    background-size: 100%;
 
     position: absolute;
     bottom: 2px;
@@ -94,9 +133,10 @@ body{
 
 #receiver #score{
     width: 100%;
-    font-size: 24px;
+    font-size: 28px;
     text-align: center;
-    line-height: 105px;
+    position: absolute;
+    top: 32%;
     color:#4d473b;
     text-shadow: 1px 1px 2px #4d473b;
 }
@@ -105,66 +145,92 @@ body{
 
 /*****************************Game End***************************/
 #endBlock{
-    width: 750px;
-    height: 550px;
+    width: 56%;
+    height: 83%;
     position: absolute;
-    left: 47%;
-    margin-left: -375px;
-    top: 30px;
+    left: 50%;
+    margin-left: -32%;
+    top: 3%;
     z-index:100;
     background-image: url(../img/star_bg.png);
+    background-size: 100%;
+    background-repeat: no-repeat;
     display: none;
 }
 
 #endBlock #endScore{
-    width: 160px;
-    height: 40px;
-    color: #ed8f84;
-    font-size: 24px;
+    width: 10.6%;
+    height: 14.6%;
+    border-radius: 50%;
     position: absolute;
-    bottom:120px;
-    left:260px;
+    left: 40%;
+    bottom: 25%;
+    text-align: center;
+    font-size: 28px;
+    line-height: 300%;
+    color:#4d473b;
+    cursor: pointer;
+    background-image: url(../img/ChooseBtu.png);
+    background-repeat: no-repeat;
+    background-size: 100%;
     -webkit-animation: shine 2s;
     -webkit-animation-iteration-count: infinite;
+
 }
 
 @-webkit-keyframes shine {
     0%{
-        color:#ffc0bf;
-        text-shadow: 1px 1px 1px #ffffff;
+        background-image: url(../img/ChooseBtu.png);
+        box-shadow: 0px 0px 0px #f2e2c8;
     }
-    30%{
-        color:#ed8f84;
-        text-shadow: 1px 1px 8px #ffffff;
+    50%{
+        background-image: url(../img/ChooseBtu1.png);
+        box-shadow: 0px 0px 14px #f2e2c8;
     }
     100%{
-        color:#ffc0bf;
-        text-shadow: 1px 1px 1px #ffffff;
+        background-image: url(../img/ChooseBtu.png);
+        box-shadow: 0px 0px 0px #f2e2c8;
     }
 }
 
 #endBlock #newBtu{
-    width: 60px;
-    height: 60px;
+    width: 10.6%;
+    height: 14.6%;
+    border-radius: 50%;
     position: absolute;
-    border-radius: 8px;
-    right: 220px;
-    bottom: 120px;
+    right: 20%;
+    bottom: 25%;
     text-align: center;
     line-height: 50px;
     font-size: 25px;
     color:#67b0b7;
     cursor: pointer;
-    background-image: url(../img/resert.png);
-
+    background-image: url(../img/ChooseBtu.png);
+    background-repeat: no-repeat;
+    background-size: 100%;
+    -webkit-transition: background-image 1s, box-shadow 1s;
 }
 
 
 
 #endBlock #newBtu:hover{
-    width: 60px;
-    height: 60px;
-    position: absolute;
-    background-image: url(../img/resert1.png);
+    background-image: url(../img/ChooseBtu1.png);
+    box-shadow: 0px 0px 14px #f2e2c8;
 }
 
+
+#endBlock #newBtu #resert{
+    width: 65%;
+    height: 65%;
+    position: absolute;
+    top: 17%;
+    left: 17%;
+    background-image: url(../img/resert.png);
+    background-repeat: no-repeat;
+    background-size: 100%;
+    /*-webkit-transition: background-image 1s;*/
+}
+
+#endBlock #newBtu:hover #resert{
+    background-image: url(../img/resert1.png);
+}
