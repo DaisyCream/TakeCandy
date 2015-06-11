@@ -165,7 +165,7 @@ function TakeCandyGame() {
             if (isTake(target, index)) {
                 scoreAll++;
                 score.innerHTML = "score: " + scoreAll;
-                GameTime+=0.5;
+                GameTime = parseInt((GameTime+0.5) * 100) / 100;
                 target.parentNode.removeChild(target);
             }
         }
@@ -201,7 +201,7 @@ function TakeCandyGame() {
     /*****************************game end**************************/
     function timeStart() {
         GameTime -= 0.05;
-        timeBlock.innerHTML = parseInt(GameTime * 100) / 100;
+        timeBlock.innerHTML = GameTime.toFixed(2);
         if (GameTime <= 0.00) {
             GameOver();
         }
@@ -215,7 +215,8 @@ function TakeCandyGame() {
 
         endBlock.style.display = "block";
         endScore.innerHTML = scoreAll;
-        timeBlock.innerHTML = 0.00;
+        timeBlock.innerHTML =
+            "0.00";
     }
 
 
