@@ -8,7 +8,7 @@ function TakeCandyGame() {
     var score = document.getElementById("score");
     var upThing = document.getElementById("upThing");
     var receiver = document.getElementById("receiver");
-    var time = 10.00;
+    var GameTime = 10.00;
     var IsLeft = false;
     var IsRight = false;
     var timeBlock = document.getElementById("time");
@@ -16,6 +16,29 @@ function TakeCandyGame() {
     var endScore = document.getElementById("endScore");
     var newBtu = document.getElementById("newBtu");
     var candybox = document.getElementsByClassName("box");
+
+    /*****************************game auto*************************/
+    var CENTER_ELE = function(){};
+    CENTER_ELE.standardEle = document.getElementById("startBlock");
+    CENTER_ELE.btuWidth = CENTER_ELE.standardEle.offsetWidth;
+    CENTER_ELE.setCenter = function () {
+        CENTER_ELE.standardEle.style.borderRadius = parseInt(CENTER_ELE.btuWidth/2*100)/100 + "px";
+        newBtu.style.borderRadius = parseInt(CENTER_ELE.btuWidth/2*100)/100 + "px";
+        endScore.style.borderRadius = parseInt(CENTER_ELE.btuWidth/2*100)/100 + "px";
+
+        CENTER_ELE.standardEle.style.height = CENTER_ELE.btuWidth + "px";
+        newBtu.style.height = CENTER_ELE.btuWidth + "px";
+        endScore.style.height = CENTER_ELE.btuWidth + "px";
+
+        startBtu.style.lineHeight = CENTER_ELE.btuWidth + "px";
+        endScore.style.lineHeight = CENTER_ELE.btuWidth + "px";
+
+        timeBlock.style.lineHeight = timeBlock.offsetHeight*0.80 + "px";
+        start.style.height = (start.offsetWidth/15)*11 + "px";
+        endBlock.style.height = (start.offsetWidth/15)*11 + "px";
+    }
+
+    CENTER_ELE.setCenter();
 
 
     /*****************************game star*************************/
@@ -25,7 +48,7 @@ function TakeCandyGame() {
      */
     function getReTime() {
         var ScreenWidth = document.documentElement.clientWidth;
-        var time = parseInt(ScreenWidth / (68 + (ScreenWidth - 1350) / 4));
+        var time = parseInt(ScreenWidth / (100 + (ScreenWidth - 1200) / 3));
         return time;
     }
 
@@ -124,7 +147,7 @@ function TakeCandyGame() {
         candybox[index].appendChild(box);
         box.setAttribute("class", "boxIn");
         setCandyHeight(box);
-        downing(box, (parseInt(Math.random() * 30) + 30), 1, index);
+        downing(box, (parseInt(Math.random() * 20) + 50), 1, index);
 
     }
 
@@ -142,6 +165,7 @@ function TakeCandyGame() {
             if (isTake(target, index)) {
                 scoreAll++;
                 score.innerHTML = "score: " + scoreAll;
+                GameTime+=0.5;
                 target.parentNode.removeChild(target);
             }
         }
@@ -176,9 +200,9 @@ function TakeCandyGame() {
 
     /*****************************game end**************************/
     function timeStart() {
-        time -= 0.05;
-        timeBlock.innerHTML = parseInt(time * 100) / 100;
-        if (time <= 0.00) {
+        GameTime -= 0.05;
+        timeBlock.innerHTML = parseInt(GameTime * 100) / 100;
+        if (GameTime <= 0.00) {
             GameOver();
         }
     }
